@@ -1,7 +1,6 @@
 "use client";
 
-import { createContext, useEffect, useState } from "react";
-import { Socket } from "socket.io-client";
+import { createContext, useState } from "react";
 
 export const GameContext = createContext({
   onlinePeople: 0,
