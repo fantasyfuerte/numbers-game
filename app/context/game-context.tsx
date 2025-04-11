@@ -12,7 +12,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     const [onlinePeople, setOnlinePeople] = useState(0);
 
     useEffect(() => {
-        const socket = new Socket("https://numbers-game-fppg.onrender.com/");
+        const socket = new Socket("https://numbers-game-fppg.onrender.com");
         socket.on("connect", () => {
             console.log("connected");
         });
