@@ -16,7 +16,7 @@ export default function Home() {
           Numbers Game
         </h1>
       </div>
-      
+      <section></section>
     </main>
   );
 }
