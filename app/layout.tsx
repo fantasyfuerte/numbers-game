@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistMono.variable} antialiased bg-backgroundSecondary`}
+        className={`${geistMono.variable} antialiased bg-backgroundSecondary select-none`}
       >
         <GameProvider>
           <div className="bg-gradient-to-r from-backgroundPrimary to-backgroundSecondary">
