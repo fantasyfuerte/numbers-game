@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 export const GameContext = createContext({
   onlinePeople: 0,
@@ -9,8 +9,9 @@ export const GameContext = createContext({
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const [onlinePeople, setOnlinePeople] = useState(0);
 
-  setOnlinePeople(1);
-
+  useEffect(() => {
+    setOnlinePeople(1);
+  }, []);
   // useEffect(() => {
   //     const socket = new Socket("https://numbers-game-fppg.onrender.com");
   //     socket.on("connect", () => {
