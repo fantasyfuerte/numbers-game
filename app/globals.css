@@ -9,10 +9,12 @@
   --color-backgroundPrimary: #270202;
   --color-backgroundSecondary: #010530;
   --color-primary: #d79b57;
+  --color-secondary: #b83030;
 }
 
 .gradient-text {
   background: linear-gradient(to right, #d79b57, #b83030);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
