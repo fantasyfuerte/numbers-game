@@ -30,7 +30,7 @@ export default function RootLayout({
         className={`${geistMono.variable} antialiased bg-backgroundSecondary select-none`}
       >
         <GameProvider>
-          <div className="bg-gradient-to-r from-backgroundPrimary to-backgroundSecondary">
+          <div className="bg-gradient-to-r from-backgroundPrimary to-backgroundSecondary min-h-screen">
             <header className="flex justify-between py-4 px-8">
               <h2
                 className={`text-2xl text-primary font-bold ${sairaStencilOne.className}`}
