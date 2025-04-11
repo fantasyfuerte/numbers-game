@@ -7,7 +7,7 @@ interface Props {
 
 function GameCards({ title, description, img, cta }: Props) {
   return (
-    <article className="border-primary/50 border-2 rounded-lg p-4 flex flex-col gap-16 w-[300px] justify-between bg-gradient-to-b odd:from-backgroundSecondary/70 even:from-backgroundPrimary/70 to-white/15">
+    <article className="border-primary/50 border-2 rounded-lg p-4 flex flex-col gap-16 w-[300px] justify-between bg-gradient-to-b odd:from-backgroundSecondary/70 even:from-backgroundPrimary/70 to-white/15 shadow-primary/20 shadow-2xl">
       <div>
         <h4 className="text-primary font-bold">{title}</h4>
         <p className="text-primary/70 font-semibold">{description}</p>
