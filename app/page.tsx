@@ -8,8 +8,8 @@ const sairaStencilOne = Saira_Stencil_One({
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="flex flex-col items-center">
+    <main className="flex min-h-screen flex-col items-center gap-30 p-24">
+      <div className="flex flex-col items-center -mt-10">
         <h4 className="text-xl text-primary font-bold">Welcome to</h4>
         <h1
           className={`text-6xl font-bold gradient-text ${sairaStencilOne.className}`}
