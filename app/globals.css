@@ -8,17 +8,21 @@
 @theme {
   --color-backgroundPrimary: #270202;
   --color-backgroundSecondary: #010530;
-  --color-primary: #d79b57;
-  --color-secondary: #b83030;
+  --color-primary: #dba465;
+  --color-secondary: #c42626;
 }
 
 .gradient-text {
-  background: linear-gradient(to right, #d79b57, #b83030);
+  background: linear-gradient(
+    to right,
+    var(--color-primary),
+    var(--color-secondary)
+  );
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .test {
-  color: #ba6300;
+  color: #c42626;
 }
