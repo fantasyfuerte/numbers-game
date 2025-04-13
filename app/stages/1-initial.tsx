@@ -3,6 +3,7 @@ import { Saira_Stencil_One } from "next/font/google";
 import { useState } from "react";
 import { useGame } from "@/app/context/game-context";
 import { Stages } from "../page";
+import JoinGameModal from "../components/join-game-modal";
 
 const sairaStencilOne = Saira_Stencil_One({
   weight: "400",
@@ -17,6 +18,7 @@ interface Props {
 
 function HomePage({ setAppStage, setCode, code }: Props) {
   const [modal, setModal] = useState<boolean>(false);
+  const [showError, setShowError] = useState<boolean>(false);
 
   const { createGame, joinGame } = useGame();
 
@@ -28,25 +30,23 @@ function HomePage({ setAppStage, setCode, code }: Props) {
   }
 
   function joinMatch() {
+    if (!code || code.length !== 5) {
+      setShowError(true);
+      return;
+    }
     joinGame(code);
   }
 
   return (
     <>
       {modal ? (
-        <div className="">
-          <h4 className="text-primary text-2xl font-bold text-center">
-            Match Code
-          </h4>
-          <input
-            type="text"
-            placeholder="Type code here..."
-            className="border-2 border-primary rounded-lg px-4 py-2 mt-4 outline-none font-bold gradient-text text-center placeholder:opacity-45"
-            onChange={(e) => setCode(e.target.value)}
-            value={code}
-            autoFocus
-          />
-        </div>
+        <JoinGameModal
+          code={code}
+          setCode={setCode}
+          joinMatch={joinMatch}
+          showError={showError}
+          setShowError={setShowError}
+        />
       ) : (
         <>
           <div className="flex flex-col items-center -mt-10">
