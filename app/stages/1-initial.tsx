@@ -1,6 +1,8 @@
 import GameCards from "@/app/components/game-cards";
 import { Saira_Stencil_One } from "next/font/google";
 import { useState } from "react";
+import { useGame } from "@/app/context/game-context";
+import { Stages } from "../page";
 
 const sairaStencilOne = Saira_Stencil_One({
   weight: "400",
@@ -8,16 +10,42 @@ const sairaStencilOne = Saira_Stencil_One({
 });
 
 interface Props {
-  createGame: () => void;
+  setAppStage: (stage: Stages) => void;
+  setCode: (code: string) => void;
+  code: string;
 }
 
-function HomePage({ createGame }: Props) {
+function HomePage({ setAppStage, setCode, code }: Props) {
   const [modal, setModal] = useState<boolean>(false);
+
+  const { createGame, joinGame } = useGame();
+
+  function createMatch() {
+    setAppStage(Stages.WAITING);
+    const code = crypto.randomUUID().slice(0, 5);
+    setCode(code);
+    createGame(code);
+  }
+
+  function joinMatch() {
+    joinGame(code);
+  }
+
   return (
     <>
       {modal ? (
         <div className="">
-          <h4 className="text-primary text-2xl font-bold">Enter a game code</h4>
+          <h4 className="text-primary text-2xl font-bold text-center">
+            Match Code
+          </h4>
+          <input
+            type="text"
+            placeholder="Type code here..."
+            className="border-2 border-primary rounded-lg px-4 py-2 mt-4 outline-none font-bold gradient-text text-center placeholder:opacity-45"
+            onChange={(e) => setCode(e.target.value)}
+            value={code}
+            autoFocus
+          />
         </div>
       ) : (
         <>
@@ -36,7 +64,7 @@ function HomePage({ createGame }: Props) {
               title="Create New Game"
               description="Invite a friend to guess your number. The first one to guess wins"
               cta="Create"
-              action={createGame}
+              action={createMatch}
             />
             <GameCards
               title="Join Game"
