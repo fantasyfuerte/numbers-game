@@ -1,4 +1,12 @@
+"use client";
+
 import HomePage from "./stages/Home";
+
+enum Stages {
+  INITIAL = "initial",
+  WAITING = "waiting",
+  PLAYING = "playing",
+}
 
 export default function Home() {
   return (
