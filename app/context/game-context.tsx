@@ -11,7 +11,7 @@ export const GameContext = createContext<ReturnType<typeof getGame>>({
   createGame: () => {},
   joinGame: () => {},
   setSecretNumber: () => {},
-  endGame: () => {},
+  // endGame: () => {},
 });
 
 const getGame = () => {
