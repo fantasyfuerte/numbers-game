@@ -2,11 +2,10 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
-import Image from "next/image";
 
 const socket = io("https://numbers-game-fppg.onrender.com/");
 
-export const GameContext = createContext<ReturnType<typeof getGame>>({
+export const GameContext = createContext<ReturnType<typeof GetGame>>({
   onlinePeople: 0,
   createGame: () => {},
   joinGame: () => {},
@@ -14,7 +13,7 @@ export const GameContext = createContext<ReturnType<typeof getGame>>({
   // endGame: () => {},
 });
 
-const getGame = () => {
+const GetGame = () => {
   const [onlinePeople, setOnlinePeople] = useState(0);
 
   useEffect(() => {
@@ -39,7 +38,7 @@ const getGame = () => {
 
 export function GameProvider({ children }: { children: React.ReactNode }) {
   return (
-    <GameContext.Provider value={getGame()}>{children}</GameContext.Provider>
+    <GameContext.Provider value={GetGame()}>{children}</GameContext.Provider>
   );
 }
 
