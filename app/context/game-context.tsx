@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useEffect, useState } from "react";
+import { io } from "socket.io-client";
 
 export const GameContext = createContext({
   onlinePeople: 0,
@@ -10,21 +11,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   const [onlinePeople, setOnlinePeople] = useState(0);
 
   useEffect(() => {
-    setOnlinePeople(1);
+    const socket = io("https://numbers-game-fppg.onrender.com");
+    socket.on("online-status ", (socket) => {
+      setOnlinePeople(socket);
+    });
   }, []);
-  
-  // useEffect(() => {
-  //     const socket = new Socket("https://numbers-game-fppg.onrender.com");
-  //     socket.on("connect", () => {
-  //         console.log("connected");
-  //     });
-  //     socket.on("disconnect", () => {
-  //         console.log("disconnected");
-  //     });
-  //     socket.on("onlinePeople", (data) => {
-  //         setOnlinePeople(data);
-  //     });
-  // }, []);
 
   return (
     <GameContext.Provider value={{ onlinePeople: onlinePeople }}>
