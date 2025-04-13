@@ -12,9 +12,14 @@ enum Stages {
 export default function Home() {
   const [appStage, setAppStage] = useState<Stages>(Stages.INITIAL);
 
+  function createGame() {
+    setAppStage(Stages.WAITING);
+
+  }
+
   return (
     <main className="flex flex-col items-center gap-30 md:p-20 pt-24 md:pt-20">
-      {appStage === Stages.INITIAL && <HomePage />}
+      {appStage === Stages.INITIAL && <HomePage createGame={createGame} />}
     </main>
   );
 }

@@ -7,8 +7,12 @@ const sairaStencilOne = Saira_Stencil_One({
   subsets: ["latin"],
 });
 
-function HomePage() {
-  const [modal, setModal] = useState<false | "create" | "join">(false);
+interface Props {
+  createGame: () => void;
+}
+
+function HomePage({ createGame }: Props) {
+  const [modal, setModal] = useState<boolean>(false);
   return (
     <>
       <div className="flex flex-col items-center -mt-10">
@@ -26,11 +30,13 @@ function HomePage() {
           title="Create New Game"
           description="Invite a friend to guess your number. The first one to guess wins"
           cta="Create"
+          action={createGame}
         />
         <GameCards
           title="Join Game"
           description="Join a game created by a friend"
           cta="Join"
+          action={() => setModal(true)}
         />
       </section>
     </>

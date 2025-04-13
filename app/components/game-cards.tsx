@@ -2,16 +2,17 @@ interface Props {
   title: string;
   description: string;
   cta: string;
+  action: ()=>void
 }
 
-function GameCards({ title, description, cta }: Props) {
+function GameCards({ title, description, cta, action }: Props) {
   return (
     <article className="border-primary/50 border-2 rounded-lg p-4 flex flex-col gap-16 w-[300px] justify-between bg-gradient-to-b odd:from-backgroundSecondary/70 even:from-backgroundPrimary/70 to-primary/20 shadow-primary/20 shadow-2xl hover:scale-110 hover:z-20 transition duration-700">
       <div>
         <h4 className="text-primary font-bold">{title}</h4>
         <p className="text-primary/70 font-semibold">{description}</p>
       </div>
-      <button className="bg-primary hover:bg-primary/80 text-backgroundSecondary px-4 py-2 rounded-lg font-bold">
+      <button className="bg-primary hover:bg-primary/80 text-backgroundSecondary px-4 py-2 rounded-lg font-bold" onClick={action}>
         {cta}
       </button>
     </article>
