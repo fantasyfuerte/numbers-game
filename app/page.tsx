@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import HomePage from "./stages/Home";
+import HomePage from "./stages/1-initial";
 import { useGame } from "./context/game-context";
 
 enum Stages {
@@ -24,6 +24,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center gap-30 md:p-20 pt-24 md:pt-20">
       {appStage === Stages.INITIAL && <HomePage createGame={createMatch} />}
+
     </main>
   );
 }
