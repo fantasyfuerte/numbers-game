@@ -1,5 +1,6 @@
 import GameCards from "@/app/components/game-cards";
 import { Saira_Stencil_One } from "next/font/google";
+import { useState } from "react";
 
 const sairaStencilOne = Saira_Stencil_One({
   weight: "400",
@@ -7,6 +8,7 @@ const sairaStencilOne = Saira_Stencil_One({
 });
 
 function HomePage() {
+  const [modal, setModal] = useState<false | "create" | "join">(false);
   return (
     <>
       <div className="flex flex-col items-center -mt-10">
