@@ -19,7 +19,6 @@ interface Props {
 
 function HomePage({ setAppStage, setCode, code, cancelMatch }: Props) {
   const [modal, setModal] = useState<boolean>(false);
-  const [showError, setShowError] = useState<boolean>(false);
 
   const { createGame, joinGame } = useGame();
 
@@ -30,24 +29,14 @@ function HomePage({ setAppStage, setCode, code, cancelMatch }: Props) {
     createGame(code);
   }
 
-  function joinMatch() {
-    if (!code || code.length !== 5) {
-      setShowError(true);
-      return;
-    }
-    joinGame(code);
-  }
-
   return (
     <>
       {modal ? (
         <JoinGameModal
           code={code}
           setCode={setCode}
-          joinMatch={joinMatch}
-          showError={showError}
-          setShowError={setShowError}
           cancel={() => setModal(false)}
+          joinGame={joinGame}
         />
       ) : (
         <>

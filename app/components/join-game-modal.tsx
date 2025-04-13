@@ -1,16 +1,23 @@
-import React from "react";
-import { Stages } from "../page";
+import React, { useState } from "react";
 
 interface Props {
   code: string;
   setCode: (code: string) => void;
-  joinMatch: () => void;
-  showError: boolean;
-  setShowError: (showError: boolean) => void;
   cancel: () => void;
+  joinGame: (code: string) => void;
 }
 
-function JoinGameModal({ code, setCode, joinMatch, showError, cancel }: Props) {
+function JoinGameModal({ code, setCode, cancel, joinGame }: Props) {
+  const [showError, setShowError] = useState<boolean>(false);
+
+  function joinMatch() {
+    if (!code || code.length !== 5) {
+      setShowError(true);
+      return;
+    }
+    joinGame(code);
+  }
+
   return (
     <div>
       <h4 className="text-primary text-2xl font-bold text-center">
