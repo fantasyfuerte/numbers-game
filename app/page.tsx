@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Initial from "./stages/1-initial";
 import { useGame } from "./context/game-context";
+import Initial from "./stages/1-initial";
 
 enum Stages {
   INITIAL = "initial",
