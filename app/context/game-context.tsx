@@ -34,7 +34,7 @@ const getGame = () => {
     socket.emit("set-secret-number", number, gameCode);
   };
 
-  return { onlinePeople, createGame };
+  return { onlinePeople, createGame, joinGame, setSecretNumber };
 };
 
 export function GameProvider({ children }: { children: React.ReactNode }) {
