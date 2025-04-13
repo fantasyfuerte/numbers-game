@@ -19,7 +19,7 @@ function HomePage() {
           Numbers Game
         </h1>
       </div>
-      <section className="flex gap-4 justify-around flex-wrap">
+      <section className="flex gap-8 justify-around flex-wrap">
         <GameCards
           title="Create New Game"
           description="Invite a friend to guess your number. The first one to guess wins"
