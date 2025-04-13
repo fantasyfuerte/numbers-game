@@ -47,7 +47,7 @@ function HomePage({ setAppStage, setCode, code, cancelMatch }: Props) {
           joinMatch={joinMatch}
           showError={showError}
           setShowError={setShowError}
-          cancelMatch={cancelMatch}
+          cancel={() => setModal(false)}
         />
       ) : (
         <>

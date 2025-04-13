@@ -1,6 +1,16 @@
 import React from "react";
+import { Stages } from "../page";
 
-function JoinGameModal({code, setCode, joinMatch, showError,cancelMatch}: any) {
+interface Props {
+  code: string;
+  setCode: (code: string) => void;
+  joinMatch: () => void;
+  showError: boolean;
+  setShowError: (showError: boolean) => void;
+  cancel: () => void;
+}
+
+function JoinGameModal({ code, setCode, joinMatch, showError, cancel }: Props) {
   return (
     <div>
       <h4 className="text-primary text-2xl font-bold text-center">
@@ -20,7 +30,13 @@ function JoinGameModal({code, setCode, joinMatch, showError,cancelMatch}: any) {
       >
         Join
       </button>
-      <button className="bg-primary hover:bg-primary/80 text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit mx-auto mt-4 block" onClick={cancelMatch}>
+      <button
+        className="bg-primary hover:bg-primary/80 text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit mx-auto mt-4 block"
+        onClick={() => {
+          setCode("");
+          cancel();
+        }}
+      >
         Cancel
       </button>
       {showError && (
