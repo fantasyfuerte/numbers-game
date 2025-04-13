@@ -17,7 +17,7 @@ interface Props {
   cancelMatch: () => void;
 }
 
-function HomePage({ setAppStage, setCode, code, cancelMatch }: Props) {
+function HomePage({ setAppStage, setCode, code }: Props) {
   const [modal, setModal] = useState<boolean>(false);
 
   const { createGame, joinGame } = useGame();
