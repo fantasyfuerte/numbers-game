@@ -14,9 +14,10 @@ interface Props {
   setAppStage: (stage: Stages) => void;
   setCode: (code: string) => void;
   code: string;
+  cancelMatch: () => void;
 }
 
-function HomePage({ setAppStage, setCode, code }: Props) {
+function HomePage({ setAppStage, setCode, code, cancelMatch }: Props) {
   const [modal, setModal] = useState<boolean>(false);
   const [showError, setShowError] = useState<boolean>(false);
 
@@ -46,6 +47,7 @@ function HomePage({ setAppStage, setCode, code }: Props) {
           joinMatch={joinMatch}
           showError={showError}
           setShowError={setShowError}
+          cancelMatch={cancelMatch}
         />
       ) : (
         <>
