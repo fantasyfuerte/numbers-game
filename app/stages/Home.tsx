@@ -1,5 +1,10 @@
-import { Saira_Stencil_One } from "next/font/google";
 import GameCards from "@/app/components/game-cards";
+import { Saira_Stencil_One } from "next/font/google";
+
+const sairaStencilOne = Saira_Stencil_One({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 function Home() {
   return (
