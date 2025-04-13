@@ -6,7 +6,7 @@ const sairaStencilOne = Saira_Stencil_One({
   subsets: ["latin"],
 });
 
-function Home() {
+function HomePage() {
   return (
     <>
       <div className="flex flex-col items-center -mt-10">
@@ -35,4 +35,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomePage;
