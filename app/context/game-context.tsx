@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import Image from "next/image";
 
@@ -41,4 +41,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   return (
     <GameContext.Provider value={getGame()}>{children}</GameContext.Provider>
   );
+}
+
+export function useGame() {
+  return useContext(GameContext);
 }
