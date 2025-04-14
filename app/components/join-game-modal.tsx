@@ -15,7 +15,8 @@ function JoinGameModal({ code, setCode, cancel, joinGame }: Props) {
       setShowError(true);
       return;
     }
-    joinGame(code);
+    const codeFixed = code.toLowerCase();
+    joinGame(codeFixed);
   }
 
   return (
