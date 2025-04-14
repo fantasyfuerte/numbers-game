@@ -36,7 +36,7 @@ export default function Home() {
       {appStage === Stages.WAITING && (
         <Waiting code={code} cancelMatch={cancelMatch} />
       )}
-      {appStage === Stages.PLAYING && <Playing />}
+      {appStage === Stages.PLAYING && <Playing code={code} />}
     </main>
   );
 }
