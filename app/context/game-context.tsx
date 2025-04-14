@@ -7,7 +7,6 @@ const socket = io("https://numbers-game-fppg.onrender.com/");
 
 export const GameContext = createContext<ReturnType<typeof GetGame>>({
   onlinePeople: 0,
-  ready: false,
   createGame: () => {},
   joinGame: () => {},
   setSecretNumber: () => {},
@@ -22,9 +21,6 @@ const GetGame = () => {
     socket.on("online-status", (socket) => {
       setOnlinePeople(socket);
     });
-    socket.on("game-created", () => {
-      setReady(true);
-    });
   }, []);
   const createGame = (code: string) => {
     socket.emit("create-game", code);
@@ -38,7 +34,7 @@ const GetGame = () => {
     socket.emit("set-secret-number", number, gameCode);
   };
 
-  return { onlinePeople, ready, createGame, joinGame, setSecretNumber };
+  return { onlinePeople, createGame, joinGame, setSecretNumber };
 };
 
 export function GameProvider({ children }: { children: React.ReactNode }) {
