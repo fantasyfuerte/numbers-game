@@ -11,6 +11,7 @@ export default function Home() {
 
   function cancelMatch() {
     setAppStage(Stages.INITIAL);
+    setCode("");
   }
 
   return (
