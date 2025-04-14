@@ -11,7 +11,7 @@ function JoinGameModal({ code, setCode, cancel, joinGame }: Props) {
   const [showError, setShowError] = useState<boolean>(false);
 
   function joinMatch() {
-    if (!code || code.length !== 5) {
+    if (!code || code.length !== 4) {
       setShowError(true);
       return;
     }
