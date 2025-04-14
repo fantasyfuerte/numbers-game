@@ -1,8 +1,14 @@
 import { useState } from "react";
 
-export function Numbers(props: NumbersProp) {
+interface Props {
+  setSecretCode: (number: number) => void;
+  disabled?: boolean;
+}
+
+export function Numbers({ setSecretCode }: Props) {
   const [value, setValue] = useState("");
   const [focused, setFocused] = useState(false);
+
   const validate = (value: string) => {
     if (value.length > 4) return false;
     if (value.startsWith("0")) return false;
@@ -20,7 +26,7 @@ export function Numbers(props: NumbersProp) {
       return;
     }
     setValue(e.target.value);
-    props.onChange?.(e.target.value);
+    setSecretCode(Number(e.target.value));
   };
   return (
     <label className="relative grid grid-cols-4 gap-2 max-w-full w-xs text-xl font-bold text-primary">
@@ -34,7 +40,6 @@ export function Numbers(props: NumbersProp) {
         minLength={4}
         maxLength={4}
         required
-        disabled={props.disabled}
       />
       <div className="flex items-center justify-center aspect-square border-2 border-primary/70 rounded-md">
         {values[0] && values[0]}
@@ -58,9 +63,4 @@ export function Numbers(props: NumbersProp) {
 
 function Caret() {
   return <div className="h-[70%] w-[2px] bg-base-content animate-pulse"></div>;
-}
-
-interface NumbersProp {
-  onChange?: (number: string) => void;
-  disabled?: boolean;
 }
