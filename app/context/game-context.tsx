@@ -25,6 +25,9 @@ const GetGame = () => {
     socket.on("joined-to-game", () => {
       setReady(true);
     });
+    return () => {
+      socket.disconnect();
+    };
   }, []);
   const createGame = (code: string) => {
     socket.emit("create-game", code);
