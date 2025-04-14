@@ -12,10 +12,6 @@ function Playing({ code }: Props) {
 
   const { setSecretNumber, rivalIsReady } = useGame();
 
-  useEffect(() => {
-    alert(rivalIsReady);
-  }, [rivalIsReady]);
-
   function Submit() {
     if (choosenNumber) {
       setSecretNumber(choosenNumber, code);
