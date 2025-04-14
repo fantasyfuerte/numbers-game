@@ -11,12 +11,16 @@ export const GameContext = createContext<ReturnType<typeof GetGame>>({
   joinGame: () => {},
   setSecretNumber: () => {},
   ready: false,
+  rivalIsReady: false,
+  secretNumberFromSocket: "",
   // endGame: () => {},
 });
 
 const GetGame = () => {
   const [onlinePeople, setOnlinePeople] = useState(0);
   const [ready, setReady] = useState(false);
+  const [rivalIsReady, setRivalIsReady] = useState(false);
+  const [secretNumberFromSocket, setSecretNumberFromSocket] = useState("");
 
   useEffect(() => {
     socket.on("online-status", (socket) => {
@@ -24,6 +28,12 @@ const GetGame = () => {
     });
     socket.on("joined-to-game", () => {
       setReady(true);
+    });
+    socket.on("number-setted", (number: string) => {
+      setSecretNumberFromSocket(number);
+    });
+    socket.on("rival-is-ready", () => {
+      setRivalIsReady(true);
     });
     return () => {
       socket.disconnect();
@@ -41,7 +51,15 @@ const GetGame = () => {
     socket.emit("set-secret-number", number, gameCode);
   };
 
-  return { onlinePeople, ready, createGame, joinGame, setSecretNumber };
+  return {
+    onlinePeople,
+    ready,
+    createGame,
+    joinGame,
+    setSecretNumber,
+    secretNumberFromSocket,
+    rivalIsReady,
+  };
 };
 
 export function GameProvider({ children }: { children: React.ReactNode }) {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Numbers } from "../components/number-setter.tsx";
-import { useGame } from "../context/game-context.jsx";
+import { useGame } from "../context/game-context";
 
 interface Props {
   code: string;
@@ -10,7 +10,11 @@ function Playing({ code }: Props) {
   const [choosenNumber, setChosenNumber] = useState<number>();
   const [readyToPlay, setReadyToPlay] = useState(false);
 
-  const { setSecretNumber } = useGame();
+  const { setSecretNumber, rivalIsReady } = useGame();
+
+  useEffect(() => {
+    alert(rivalIsReady);
+  }, [rivalIsReady]);
 
   function Submit() {
     if (choosenNumber) {
