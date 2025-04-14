@@ -3,12 +3,7 @@
 import { useState } from "react";
 import Initial from "./stages/1-initial";
 import Waiting from "./stages/2-waiting-rival";
-
-export enum Stages {
-  INITIAL = "initial",
-  WAITING = "waiting",
-  PLAYING = "playing",
-}
+import { Stages } from "./stages/00-stages";
 
 export default function Home() {
   const [appStage, setAppStage] = useState<Stages>(Stages.INITIAL);

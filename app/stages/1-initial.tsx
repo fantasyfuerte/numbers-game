@@ -2,7 +2,7 @@ import GameCards from "@/app/components/game-cards";
 import { Saira_Stencil_One } from "next/font/google";
 import { useState } from "react";
 import { useGame } from "@/app/context/game-context";
-import { Stages } from "../page";
+import { Stages } from "./00-stages";
 import JoinGameModal from "../components/join-game-modal";
 
 const sairaStencilOne = Saira_Stencil_One({
