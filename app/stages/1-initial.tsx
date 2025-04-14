@@ -23,7 +23,7 @@ function HomePage({ setAppStage, setCode, code }: Props) {
   const { createGame, joinGame } = useGame();
 
   function createMatch() {
-    const code = crypto.randomUUID().slice(0, 5);
+    const code = crypto.randomUUID().slice(0, 4);
     setCode(code);
     createGame(code);
     setAppStage(Stages.WAITING);
