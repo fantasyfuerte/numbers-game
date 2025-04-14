@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Numbers } from "../components/number-setter.tsx";
 
 function Playing() {
   const [secretNumber, setSecretNumber] = useState<number>();
   const [readyToPlay, setReadyToPlay] = useState(false);
+
+  useEffect(() => {
+  }, [secretNumber]);
 
   return (
     <>

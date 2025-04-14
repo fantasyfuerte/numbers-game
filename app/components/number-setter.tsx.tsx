@@ -17,7 +17,6 @@ export function Numbers({ setSecretCode }: Props) {
   };
   const values = value.split("");
   const length = values.length;
-  const onFocus = () => setFocused(true);
   const onBlur = () => setFocused(false);
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const validationResult = validate(e.target.value);
@@ -32,13 +31,13 @@ export function Numbers({ setSecretCode }: Props) {
     <label className="relative grid grid-cols-4 gap-2 max-w-full w-xs text-xl font-bold text-primary">
       <input
         type="text"
-        onFocus={onFocus}
         onBlur={onBlur}
         onChange={onChange}
         value={value}
         className="opacity-0 absolute"
         minLength={4}
         maxLength={4}
+        autoFocus
         required
       />
       <div className="flex items-center justify-center aspect-square border-2 border-primary/70 rounded-md">
