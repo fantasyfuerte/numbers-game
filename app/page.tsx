@@ -1,13 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Initial from "./stages/1-initial";
 import Waiting from "./stages/2-waiting-rival";
 import { Stages } from "./stages/00-stages";
+import { useGame } from "./context/game-context";
+import Playing from "./stages/3-playing";
 
 export default function Home() {
   const [appStage, setAppStage] = useState<Stages>(Stages.INITIAL);
   const [code, setCode] = useState<string>("");
+  const { ready } = useGame();
+
+  useEffect(() => {
+    if (ready) {
+      setAppStage(Stages.PLAYING);
+    }
+  }, [ready]);
 
   function cancelMatch() {
     setAppStage(Stages.INITIAL);
@@ -27,6 +36,7 @@ export default function Home() {
       {appStage === Stages.WAITING && (
         <Waiting code={code} cancelMatch={cancelMatch} />
       )}
+      {appStage === Stages.PLAYING && <Playing />}
     </main>
   );
 }
