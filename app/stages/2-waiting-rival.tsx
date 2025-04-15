@@ -1,9 +1,10 @@
 interface Props {
   code: string;
-  cancelMatch: () => void;
 }
 
-function Waiting({ code, cancelMatch }: Props) {
+function Waiting({ code }: Props) {
+  function cancelMatch() {}
+
   return (
     <article className="rounded-xl p-4 flex flex-col items-center gap-8">
       <h4 className="text-primary font-bold text-center">Waiting for rival</h4>

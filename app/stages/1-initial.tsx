@@ -2,7 +2,6 @@ import GameCards from "@/app/components/game-cards";
 import { Saira_Stencil_One } from "next/font/google";
 import { useState } from "react";
 import { useGame } from "@/app/context/game-context";
-import { Stages } from "./00-stages";
 import JoinGameModal from "../components/join-game-modal";
 
 const sairaStencilOne = Saira_Stencil_One({
@@ -11,13 +10,11 @@ const sairaStencilOne = Saira_Stencil_One({
 });
 
 interface Props {
-  setAppStage: (stage: Stages) => void;
   setCode: (code: string) => void;
   code: string;
-  cancelMatch: () => void;
 }
 
-function HomePage({ setAppStage, setCode, code }: Props) {
+function HomePage({ setCode, code }: Props) {
   const [modal, setModal] = useState<boolean>(false);
 
   const { createGame, joinGame } = useGame();
@@ -26,7 +23,6 @@ function HomePage({ setAppStage, setCode, code }: Props) {
     const code = crypto.randomUUID().slice(0, 4);
     setCode(code);
     createGame(code);
-    setAppStage(Stages.WAITING);
   }
 
   return (

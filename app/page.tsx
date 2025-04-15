@@ -8,32 +8,13 @@ import { useGame } from "./context/game-context";
 import Playing from "./stages/3-playing";
 
 export default function Home() {
-  const [appStage, setAppStage] = useState<Stages>(Stages.INITIAL);
   const [code, setCode] = useState<string>("");
-  const { ready } = useGame();
-
-  useEffect(() => {
-    if (ready) setAppStage(Stages.PLAYING);
-  }, [ready]);
-
-  function cancelMatch() {
-    setAppStage(Stages.INITIAL);
-    setCode("");
-  }
+  const { appStage } = useGame();
 
   return (
     <main className="flex flex-col items-center gap-30 md:p-20 pt-24 md:pt-20">
-      {appStage === Stages.INITIAL && (
-        <Initial
-          setAppStage={setAppStage}
-          code={code}
-          setCode={setCode}
-          cancelMatch={cancelMatch}
-        />
-      )}
-      {appStage === Stages.WAITING && (
-        <Waiting code={code} cancelMatch={cancelMatch} />
-      )}
+      {appStage === Stages.INITIAL && <Initial code={code} setCode={setCode} />}
+      {appStage === Stages.WAITING && <Waiting code={code} />}
       {appStage === Stages.PLAYING && <Playing code={code} />}
     </main>
   );
