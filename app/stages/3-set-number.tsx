@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Numbers } from "../components/number-setter.tsx.jsx";
-import { useGame } from "../context/game-context.jsx";
+import { Numbers } from "../components/number-setter.tsx";
+import { useGame } from "../context/game-context";
 
 interface Props {
   code: string;
