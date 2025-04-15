@@ -13,7 +13,7 @@ export const GameContext = createContext<ReturnType<typeof GetGame>>({
   finishGame: () => {},
   onlinePeople: 0,
   ready: false,
-  rivalIsReady: false,
+  gameIsReady: false,
   secretNumberFromSocket: "",
   appStage: Stages.INITIAL,
 });
@@ -21,7 +21,7 @@ export const GameContext = createContext<ReturnType<typeof GetGame>>({
 const GetGame = () => {
   const [onlinePeople, setOnlinePeople] = useState(0);
   const [ready, setReady] = useState(false);
-  const [rivalIsReady, setRivalIsReady] = useState(false);
+  const [gameIsReady, setGameIsReady] = useState(false);
   const [secretNumberFromSocket, setSecretNumberFromSocket] = useState("");
   const [appStage, setAppStage] = useState<Stages>(Stages.INITIAL);
 
@@ -55,15 +55,12 @@ const GetGame = () => {
     });
     socket.on("number-setted", (number: string) => {
       setSecretNumberFromSocket(number);
-      console.log("number-setted");
-    });
-    socket.on("rival-is-ready", () => {
-      console.log("rival is ready");
-      setRivalIsReady(true);
     });
     socket.on("game-ready", () => {
-      console.log("game started");
+      console.log("rival is ready");
+      setGameIsReady(true);
     });
+
     socket.on("error", (e) => {
       console.log(e);
     });
@@ -80,7 +77,7 @@ const GetGame = () => {
     onlinePeople,
     ready,
     secretNumberFromSocket,
-    rivalIsReady,
+    gameIsReady,
     appStage,
   };
 };
