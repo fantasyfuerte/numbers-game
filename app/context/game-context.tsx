@@ -26,15 +26,14 @@ const GetGame = () => {
     socket.on("online-status", (socket) => {
       setOnlinePeople(socket);
     });
-    socket.on("joined-to-game", () => {
+    socket.on("joined-to-game", (game) => {
       setReady(true);
     });
     socket.on("number-setted", (number: string) => {
       setSecretNumberFromSocket(number);
+      console.log(number);
     });
-    socket.on("rival-is-ready", () => {
-      setRivalIsReady(true);
-    });
+    socket.on("rival-is-ready", () => {});
     return () => {
       socket.disconnect();
     };
@@ -48,6 +47,7 @@ const GetGame = () => {
   };
 
   const setSecretNumber = (number: number, gameCode: string) => {
+    console.log(number + gameCode);
     socket.emit("set-secret-number", number, gameCode);
   };
 

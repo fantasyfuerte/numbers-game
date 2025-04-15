@@ -18,6 +18,11 @@ function Playing({ code }: Props) {
     }
   }
 
+  useEffect(() => {
+    if (!rivalIsReady) return;
+    alert("rival is ready");
+  }, [rivalIsReady]);
+
   return (
     <>
       {!readyToPlay && (
