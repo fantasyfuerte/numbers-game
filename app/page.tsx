@@ -13,9 +13,7 @@ export default function Home() {
   const { ready } = useGame();
 
   useEffect(() => {
-    if (ready) {
-      setAppStage(Stages.PLAYING);
-    }
+    if (ready) setAppStage(Stages.PLAYING);
   }, [ready]);
 
   function cancelMatch() {
