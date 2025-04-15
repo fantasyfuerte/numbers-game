@@ -49,7 +49,7 @@ const GetGame = () => {
     socket.on("game-created", () => {
       setAppStage(Stages.WAITING);
     });
-    socket.on("joined-to-game", (game) => {
+    socket.on("joined-to-game", () => {
       setAppStage(Stages.SET_NUMBER);
       setReady(true);
     });
