@@ -52,7 +52,9 @@ const GetGame = () => {
     socket.on("game-ready", () => {
       setAppStage(Stages.PLAYING);
     });
-
+    socket.on("wait-timeout", () => {
+      setAppStage(Stages.INITIAL);
+    });
     socket.on("error", (e) => {
       console.log(e);
     });
