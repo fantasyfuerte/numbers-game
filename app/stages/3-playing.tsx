@@ -13,7 +13,7 @@ function Playing({ code }: Props) {
   const { setSecretNumber, rivalIsReady } = useGame();
 
   function Submit() {
-    if (choosenNumber) {
+    if (choosenNumber && choosenNumber.length == 4) {
       setSecretNumber(choosenNumber, code);
     }
   }
@@ -32,7 +32,9 @@ function Playing({ code }: Props) {
           </h4>
           <Numbers setSecretCode={setChosenNumber} />
           <button
-            className="bg-primary hover:bg-primary/80 text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit mx-auto mt-4 block"
+            className={`bg-primary hover:bg-primary/80 text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit mx-auto mt-4 block ${
+              (!choosenNumber || choosenNumber?.length !== 4) && "opacity-40"
+            }`}
             onClick={Submit}
           >
             Submit
