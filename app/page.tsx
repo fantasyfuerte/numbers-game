@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useGame } from "./context/game-context";
+import { Stages } from "./stages/00-stages";
 import Initial from "./stages/1-initial";
 import Waiting from "./stages/2-waiting-rival";
-import { Stages } from "./stages/00-stages";
-import { useGame } from "./context/game-context";
 import Playing from "./stages/3-playing";
 
 export default function Home() {
