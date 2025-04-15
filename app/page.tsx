@@ -8,8 +8,8 @@ import Waiting from "./stages/2-waiting-rival";
 import Playing from "./stages/3-playing";
 
 export default function Home() {
-  const [code, setCode] = useState<string>("");
   const { appStage } = useGame();
+  const [code, setCode] = useState<string>("");
 
   return (
     <main className="flex flex-col items-center gap-30 md:p-20 pt-24 md:pt-20">
