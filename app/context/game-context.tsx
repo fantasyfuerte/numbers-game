@@ -7,15 +7,15 @@ import { Stages } from "../stages/00-stages";
 const socket = io("https://numbers-game-fppg.onrender.com/");
 
 export const GameContext = createContext<ReturnType<typeof GetGame>>({
-  onlinePeople: 0,
   createGame: () => {},
   joinGame: () => {},
   setSecretNumber: () => {},
+  finishGame: () => {},
+  onlinePeople: 0,
   ready: false,
   rivalIsReady: false,
   secretNumberFromSocket: "",
   appStage: Stages.INITIAL,
-  // endGame: () => {},
 });
 
 const GetGame = () => {
@@ -72,11 +72,12 @@ const GetGame = () => {
   }, []);
 
   return {
-    onlinePeople,
-    ready,
     createGame,
     joinGame,
     setSecretNumber,
+    finishGame,
+    onlinePeople,
+    ready,
     secretNumberFromSocket,
     rivalIsReady,
     appStage,
