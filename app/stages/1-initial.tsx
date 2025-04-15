@@ -26,7 +26,7 @@ function HomePage({ setCode, code }: Props) {
   }
 
   return (
-    <>
+    <section>
       {modal ? (
         <JoinGameModal
           code={code}
@@ -62,7 +62,7 @@ function HomePage({ setCode, code }: Props) {
           </section>
         </>
       )}
-    </>
+    </section>
   );
 }
 

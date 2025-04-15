@@ -8,7 +8,7 @@ function Waiting({ code }: Props) {
   const { finishGame } = useGame();
 
   return (
-    <article className="rounded-xl p-4 flex flex-col items-center gap-8">
+    <section className="rounded-xl p-4 flex flex-col items-center gap-8">
       <h4 className="text-primary font-bold text-center">Waiting for rival</h4>
       <h4 className="text-primary font-bold text-center text-3xl gradient-text">
         {code}
@@ -19,7 +19,7 @@ function Waiting({ code }: Props) {
       >
         Cancel
       </button>
-    </article>
+    </section>
   );
 }
 
