@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Numbers } from "../components/number-setter.tsx";
 import { useGame } from "../context/game-context";
 
@@ -8,9 +8,7 @@ interface Props {
 
 function Playing({ code }: Props) {
   const [choosenNumber, setChosenNumber] = useState<string>();
-  const [readyToPlay, setReadyToPlay] = useState(false);
-
-  const { setSecretNumber, rivalIsReady } = useGame();
+  const { setSecretNumber, gameIsReady } = useGame();
 
   function Submit() {
     if (choosenNumber && choosenNumber.length == 4) {
@@ -18,14 +16,9 @@ function Playing({ code }: Props) {
     }
   }
 
-  useEffect(() => {
-    if (!rivalIsReady) return;
-    alert("rival is ready");
-  }, [rivalIsReady]);
-
   return (
     <>
-      {!readyToPlay && (
+      {!gameIsReady && (
         <div className="flex flex-col items-center">
           <h4 className="text-2xl md:text-3xl font-bold text-primary mb-10">
             Choose your secret number
