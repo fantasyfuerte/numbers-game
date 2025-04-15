@@ -39,6 +39,7 @@ const GetGame = () => {
 
   const finishGame = (gameCode: string) => {
     socket.emit("finish-game", gameCode);
+    setAppStage(Stages.INITIAL);
   };
 
   useEffect(() => {

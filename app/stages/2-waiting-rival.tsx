@@ -1,9 +1,11 @@
+import { useGame } from "../context/game-context";
+
 interface Props {
   code: string;
 }
 
 function Waiting({ code }: Props) {
-  function cancelMatch() {}
+  const { finishGame } = useGame();
 
   return (
     <article className="rounded-xl p-4 flex flex-col items-center gap-8">
@@ -13,7 +15,7 @@ function Waiting({ code }: Props) {
       </h4>
       <button
         className="bg-primary hover:bg-primary/80 text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit"
-        onClick={cancelMatch}
+        onClick={() => finishGame(code)}
       >
         Cancel
       </button>
