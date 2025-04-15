@@ -50,7 +50,7 @@ const GetGame = () => {
       setAppStage(Stages.WAITING);
     });
     socket.on("joined-to-game", (game) => {
-      setAppStage(Stages.PLAYING);
+      setAppStage(Stages.SET_NUMBER);
       setReady(true);
     });
     socket.on("number-setted", (number: string) => {
