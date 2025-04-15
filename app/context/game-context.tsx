@@ -55,7 +55,7 @@ const GetGame = () => {
       setSecretNumberFromSocket(number);
     });
     socket.on("game-ready", () => {
-      console.log("rival is ready");
+      setAppStage(Stages.PLAYING);
     });
 
     socket.on("error", (e) => {
