@@ -7,7 +7,7 @@ interface Props {
 }
 
 function Playing({ code }: Props) {
-  const [choosenNumber, setChosenNumber] = useState<number>();
+  const [choosenNumber, setChosenNumber] = useState<string>();
   const [readyToPlay, setReadyToPlay] = useState(false);
 
   const { setSecretNumber, rivalIsReady } = useGame();

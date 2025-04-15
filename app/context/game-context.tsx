@@ -22,22 +22,6 @@ const GetGame = () => {
   const [rivalIsReady, setRivalIsReady] = useState(false);
   const [secretNumberFromSocket, setSecretNumberFromSocket] = useState("");
 
-  useEffect(() => {
-    socket.on("online-status", (socket) => {
-      setOnlinePeople(socket);
-    });
-    socket.on("joined-to-game", (game) => {
-      setReady(true);
-    });
-    socket.on("number-setted", (number: string) => {
-      setSecretNumberFromSocket(number);
-      console.log(number);
-    });
-    socket.on("rival-is-ready", () => {});
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
   const createGame = (code: string) => {
     socket.emit("create-game", code);
   };
@@ -46,10 +30,32 @@ const GetGame = () => {
     socket.emit("join-game", code);
   };
 
-  const setSecretNumber = (number: number, gameCode: string) => {
+  const setSecretNumber = (number: string, gameCode: string) => {
     console.log(number + gameCode);
-    socket.emit("set-secret-number", number, gameCode);
+    socket.emit("set-number", number, gameCode);
   };
+
+  useEffect(() => {
+    socket.on("online-status", (users) => {
+      setOnlinePeople(() => users);
+    });
+    socket.on("joined-to-game", (game) => {
+      setReady(true);
+    });
+    socket.on("number-setted", (number: string) => {
+      setSecretNumberFromSocket(number);
+      console.log("number-setted");
+    });
+    socket.on("rival-is-ready", () => {
+      console.log("rival is ready");
+    });
+    socket.on("game-started", () => {
+      console.log("game started");
+    });
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
   return {
     onlinePeople,
