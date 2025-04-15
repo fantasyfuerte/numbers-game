@@ -10,14 +10,15 @@ function SetNumber({ code }: Props) {
   const [choosenNumber, setChosenNumber] = useState<string>();
   const { setSecretNumber } = useGame();
 
-  function Submit() {
+  function Submit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     if (choosenNumber && choosenNumber.length == 4) {
       setSecretNumber(choosenNumber, code);
     }
   }
 
   return (
-    <div className="flex flex-col items-center">
+    <form className="flex flex-col items-center" onSubmit={Submit}>
       <h4 className="text-2xl md:text-3xl font-bold text-primary mb-10">
         Choose your secret number
       </h4>
@@ -28,11 +29,10 @@ function SetNumber({ code }: Props) {
             ? "opacity-40 bg-none"
             : "bg-primary hover:bg-primary/80"
         }`}
-        onClick={Submit}
       >
         Submit
       </button>
-    </div>
+    </form>
   );
 }
 
