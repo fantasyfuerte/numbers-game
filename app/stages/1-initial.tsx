@@ -26,7 +26,7 @@ function HomePage({ setCode, code }: Props) {
   }
 
   return (
-    <section>
+    <section className="flex flex-col gap-20">
       {modal ? (
         <JoinGameModal
           code={code}
