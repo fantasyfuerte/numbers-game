@@ -19,7 +19,7 @@ export default function Home() {
       {appStage === Stages.WAITING && <Waiting code={code} setCode={setCode} />}
       {appStage === Stages.SET_NUMBER && <SetNumber code={code} />}
       {appStage === Stages.PLAYING && <Playing code={code} />}
-      {appStage === Stages.RESULTS && <Results />}
+      {appStage === Stages.RESULTS && <Results code={code} />}
     </main>
   );
 }
