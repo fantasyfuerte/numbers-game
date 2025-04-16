@@ -30,14 +30,14 @@ function JoinGameModal({ code, setCode, cancel, joinGame }: Props) {
         <input
           type="text"
           placeholder="Type code here..."
-          className="border-1 border-primary rounded-lg p-1 outline-none font-bold gradient-text text-center placeholder:opacity-45 text-xl"
+          className="border-1 border-primary rounded-lg p-1 outline-none font-bold gradient-text text-center placeholder:opacity-45 text-xl border-r-0"
           onChange={(e) => setCode(e.target.value)}
           value={code}
           maxLength={4}
           autoFocus
         />
-        <button className="bg-primary hover:bg-primary/80 text-backgroundSecondary p-3 rounded-lg font-bold w-fit mx-auto">
-          <GiPlayButton size={25} />
+        <button className="bg-gradient-to-r from-primary to-secondary hover:opacity-65 text-backgroundSecondary p-2 rounded-lg font-bold w-fit mx-auto">
+          <GiPlayButton size={27} />
         </button>
       </form>
       <button
