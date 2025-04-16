@@ -3,4 +3,5 @@ export enum Stages {
   WAITING = "waiting",
   SET_NUMBER = "set-number",
   PLAYING = "playing",
+  RESULTS = "results",
 }
