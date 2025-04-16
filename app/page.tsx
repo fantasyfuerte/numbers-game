@@ -17,7 +17,7 @@ export default function Home() {
       {appStage === Stages.INITIAL && <Initial code={code} setCode={setCode} />}
       {appStage === Stages.WAITING && <Waiting code={code} />}
       {appStage === Stages.SET_NUMBER && <SetNumber code={code} />}
-      {appStage === Stages.PLAYING && <Playing />}
+      {appStage === Stages.PLAYING && <Playing code={code} />}
     </main>
   );
 }
