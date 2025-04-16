@@ -14,7 +14,7 @@ interface Props {
   code: string;
 }
 
-function HomePage({ setCode, code }: Props) {
+function Home({ setCode, code }: Props) {
   const [modal, setModal] = useState<boolean>(false);
 
   const { createGame, joinGame } = useGame();
@@ -66,4 +66,4 @@ function HomePage({ setCode, code }: Props) {
   );
 }
 
-export default HomePage;
+export default Home;
