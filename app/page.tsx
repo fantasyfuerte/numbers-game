@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useGame } from "./context/game-context";
-import { Stages } from "./stages/00-stages";
+import { Stages } from "./stages/0-stages";
 import Initial from "./stages/1-initial";
 import Waiting from "./stages/2-waiting-rival";
 import SetNumber from "./stages/3-set-number";

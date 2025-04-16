@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import { io } from "socket.io-client";
-import { Stages } from "../stages/00-stages";
+import { Stages } from "../stages/0-stages";
 
 const socket = io("https://numbers-game-fppg.onrender.com/");
 
