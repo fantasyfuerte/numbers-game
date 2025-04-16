@@ -1,13 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
   onNumberChange: (number: string) => void;
   disabled?: boolean;
+  submitted?: boolean;
 }
 
-export function NumberInput({ onNumberChange }: Props) {
+export function NumberInput({ onNumberChange, submitted }: Props) {
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    if (submitted) setInputValue("");
+  }, [submitted]);
 
   const handleBlur = () => setIsFocused(false);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
