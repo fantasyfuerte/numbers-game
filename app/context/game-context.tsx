@@ -16,6 +16,7 @@ export const GameContext = createContext<ReturnType<typeof GetGame>>({
   ready: false,
   appStage: Stages.INITIAL,
   isMyTurn: false,
+  results: null,
   notes: { you: [], rival: [] },
 });
 
@@ -24,6 +25,7 @@ const GetGame = () => {
   const [ready, setReady] = useState(false);
   const [appStage, setAppStage] = useState<Stages>(Stages.INITIAL);
   const [isMyTurn, setIsMyTurn] = useState<boolean>(false);
+  const [results, setResults] = useState<"winner" | "loser" | null>(null);
   const [notes, setNotes] = useState<{
     you: Note[];
     rival: Note[];
@@ -85,12 +87,10 @@ const GetGame = () => {
       });
     });
     socket.on("winner", (e) => {
-      console.log(e);
-      console.log("winner");
+      setResults("winner");
     });
     socket.on("game-over", (e) => {
-      console.log(e);
-      console.log("game over");
+      setResults("loser");
     });
     socket.on("wait-timeout", () => {
       setAppStage(Stages.INITIAL);
@@ -113,6 +113,7 @@ const GetGame = () => {
     ready,
     appStage,
     isMyTurn,
+    results,
     notes,
   };
 };
