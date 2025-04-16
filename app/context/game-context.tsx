@@ -14,12 +14,14 @@ export const GameContext = createContext<ReturnType<typeof GetGame>>({
   onlinePeople: 0,
   ready: false,
   appStage: Stages.INITIAL,
+  isMyTurn: false,
 });
 
 const GetGame = () => {
   const [onlinePeople, setOnlinePeople] = useState(0);
   const [ready, setReady] = useState(false);
   const [appStage, setAppStage] = useState<Stages>(Stages.INITIAL);
+  const [isMyTurn, setIsMyTurn] = useState<boolean>(false);
 
   const createGame = (code: string) => {
     socket.emit("create-game", code);
@@ -44,6 +46,7 @@ const GetGame = () => {
     });
     socket.on("game-created", () => {
       setAppStage(Stages.WAITING);
+      setIsMyTurn(() => true);
     });
     socket.on("joined-to-game", () => {
       setAppStage(Stages.SET_NUMBER);
@@ -71,6 +74,7 @@ const GetGame = () => {
     onlinePeople,
     ready,
     appStage,
+    isMyTurn,
   };
 };
 
