@@ -21,7 +21,7 @@ function JoinGameModal({ code, setCode, cancel, joinGame }: Props) {
   }
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <h4 className="text-primary text-2xl font-bold text-center">
         Match Code
       </h4>
@@ -29,9 +29,10 @@ function JoinGameModal({ code, setCode, cancel, joinGame }: Props) {
         <input
           type="text"
           placeholder="Type code here..."
-          className="border-2 border-primary rounded-lg px-4 py-2 outline-none font-bold gradient-text text-center placeholder:opacity-45"
+          className="border-1 border-primary rounded-lg p-1 outline-none font-bold gradient-text text-center placeholder:opacity-45 text-xl"
           onChange={(e) => setCode(e.target.value)}
           value={code}
+          maxLength={4}
           autoFocus
         />
         <button
@@ -42,7 +43,7 @@ function JoinGameModal({ code, setCode, cancel, joinGame }: Props) {
         </button>
       </form>
       <button
-        className="bg-primary hover:bg-primary/80 text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit mx-auto mt-4 block"
+        className="border-2 border-primary text-primary hover:bg-primary hover:text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit mx-auto mt-4"
         onClick={() => {
           setCode("");
           cancel();
