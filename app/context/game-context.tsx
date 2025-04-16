@@ -23,6 +23,13 @@ const GetGame = () => {
   const [ready, setReady] = useState(false);
   const [appStage, setAppStage] = useState<Stages>(Stages.INITIAL);
   const [isMyTurn, setIsMyTurn] = useState<boolean>(false);
+  const [notes, setNotes] = useState<{
+    you: Note[];
+    rival: Note[];
+  }>({
+    you: [],
+    rival: [],
+  });
 
   const createGame = (code: string) => {
     socket.emit("create-game", code);
@@ -62,9 +69,18 @@ const GetGame = () => {
     });
     socket.on("has-played", (data) => {
       setIsMyTurn(data.youTurn);
-      console.log(data);
-      //data.number
-      //data.asserts
+      const newNote: Note = [data.number, data.asserts];
+      if (!data.youTurn)
+        setNotes({
+          you: [...notes.you, newNote],
+          rival: notes.rival,
+        });
+      else
+        setNotes({
+          you: notes.you,
+          rival: [...notes.rival, newNote],
+        });
+      console.log(notes);
     });
     socket.on("wait-timeout", () => {
       setAppStage(Stages.INITIAL);
@@ -99,3 +115,11 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 export function useGame() {
   return useContext(GameContext);
 }
+
+//types
+type HasPlayedResponse = {
+  asserts: number;
+  number: string;
+  youTurn: boolean;
+};
+type Note = [string, number];
