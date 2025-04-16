@@ -61,6 +61,9 @@ const GetGame = () => {
     socket.on("game-ready", () => {
       setAppStage(Stages.PLAYING);
     });
+    socket.on("has-played", (data) => {
+      setIsMyTurn(data.youTurn);
+    });
     socket.on("wait-timeout", () => {
       setAppStage(Stages.INITIAL);
     });
