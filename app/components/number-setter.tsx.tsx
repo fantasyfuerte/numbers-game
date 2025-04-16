@@ -36,7 +36,7 @@ export function NumberInput({ onNumberChange, submitted, disabled }: Props) {
         onBlur={handleBlur}
         onChange={handleChange}
         value={inputValue}
-        className="opacity-0 absolute"
+        className="opacity-0 h-full w-full absolute"
         minLength={4}
         maxLength={4}
         disabled={disabled}
