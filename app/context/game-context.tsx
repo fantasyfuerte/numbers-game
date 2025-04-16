@@ -71,7 +71,6 @@ const GetGame = () => {
     socket.on("has-played", (data) => {
       setIsMyTurn(data.youTurn);
       const newNote: Note = [data.number, data.asserts];
-      console.log(newNote);
       setNotes((prevNotes) => {
         if (!data.youTurn)
           return {
@@ -84,7 +83,6 @@ const GetGame = () => {
             rival: [...prevNotes.rival, newNote],
           };
       });
-      console.log(notes);
     });
     socket.on("wait-timeout", () => {
       setAppStage(Stages.INITIAL);
