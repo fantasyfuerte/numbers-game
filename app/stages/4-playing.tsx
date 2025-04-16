@@ -2,13 +2,18 @@ import { useState } from "react";
 import { useGame } from "../context/game-context";
 import { Numbers } from "../components/number-setter.tsx";
 
-function Playing() {
+interface Props {
+  code: string;
+}
+
+function Playing({ code }: Props) {
   const [number, setNumber] = useState<string>();
-  const { isMyTurn } = useGame();
+  const { isMyTurn, testNumber } = useGame();
 
   function Submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    alert(number);
+    if (!number) return;
+    testNumber(number, code);
   }
 
   return (

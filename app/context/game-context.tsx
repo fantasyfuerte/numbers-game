@@ -38,6 +38,7 @@ const GetGame = () => {
 
   const testNumber = (number: string, gameCode: string) => {
     socket.emit("test-number", { code: gameCode, number });
+    setIsMyTurn(false);
   };
 
   const finishGame = (gameCode: string) => {
