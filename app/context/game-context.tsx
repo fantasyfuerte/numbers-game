@@ -38,7 +38,6 @@ const GetGame = () => {
 
   const testNumber = (number: string, gameCode: string) => {
     socket.emit("test-number", { code: gameCode, number });
-    setIsMyTurn(false);
   };
 
   const finishGame = (gameCode: string) => {
@@ -63,6 +62,9 @@ const GetGame = () => {
     });
     socket.on("has-played", (data) => {
       setIsMyTurn(data.youTurn);
+      console.log(data);
+      //data.number
+      //data.asserts
     });
     socket.on("wait-timeout", () => {
       setAppStage(Stages.INITIAL);
