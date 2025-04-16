@@ -22,7 +22,7 @@ function SetNumber({ code }: Props) {
       <h4 className="text-2xl md:text-3xl font-bold text-primary mb-10">
         Choose your secret number
       </h4>
-      <Numbers setSecretCode={setChosenNumber} />
+      <Numbers onNumberChange={setChosenNumber} />
       <button
         className={`text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit mx-auto mt-4 block ${
           !choosenNumber || choosenNumber?.length !== 4
