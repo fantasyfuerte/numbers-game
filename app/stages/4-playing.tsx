@@ -37,7 +37,7 @@ function Playing({ code }: Props) {
         <button
           type="submit"
           className={`text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit mx-auto mt-4 block ${
-            !number || number?.length !== 4
+            !number || number?.length !== 4 || submitted
               ? "opacity-40 bg-none"
               : "bg-primary hover:bg-primary/80"
           }`}
