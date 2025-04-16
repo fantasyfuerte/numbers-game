@@ -84,6 +84,14 @@ const GetGame = () => {
           };
       });
     });
+    socket.on("winner", (e) => {
+      console.log(e);
+      console.log("winner");
+    });
+    socket.on("game-over", (e) => {
+      console.log(e);
+      console.log("game over");
+    });
     socket.on("wait-timeout", () => {
       setAppStage(Stages.INITIAL);
     });
