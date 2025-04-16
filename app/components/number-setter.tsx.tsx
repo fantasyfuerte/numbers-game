@@ -1,11 +1,11 @@
 import { useState } from "react";
 
 interface Props {
-  setSecretCode: (number: string) => void;
+  onNumberChange: (number: string) => void;
   disabled?: boolean;
 }
 
-export function Numbers({ setSecretCode }: Props) {
+export function Numbers({ onNumberChange }: Props) {
   const [value, setValue] = useState("");
   const [focused, setFocused] = useState(false);
 
@@ -25,7 +25,7 @@ export function Numbers({ setSecretCode }: Props) {
       return;
     }
     setValue(e.target.value);
-    setSecretCode(e.target.value);
+    onNumberChange(e.target.value);
   };
   return (
     <label className="relative grid grid-cols-4 gap-2 max-w-full w-xs text-xl font-bold text-primary">
