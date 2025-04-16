@@ -120,9 +120,4 @@ export function useGame() {
 }
 
 //types
-type HasPlayedResponse = {
-  asserts: number;
-  number: string;
-  youTurn: boolean;
-};
 type Note = [string, number];
