@@ -15,7 +15,7 @@ const sairaStencilOne = Saira_Stencil_One({
 });
 
 export const metadata: Metadata = {
-  title: "Numbers Game",
+  title: "CocoGuess",
   description: "Next.js + Socket.IO",
 };
 
@@ -35,7 +35,7 @@ export default function RootLayout({
               <h2
                 className={`text-2xl text-primary font-bold ${sairaStencilOne.className}`}
               >
-                Numbers Game
+                CocoGuess
               </h2>
               <PeopleOnline />
             </header>

@@ -43,7 +43,7 @@ function Home({ setCode, code }: Props) {
             <h1
               className={`text-5xl md:text-6xl font-bold gradient-text ${sairaStencilOne.className}`}
             >
-              Numbers Game
+              CocoGuess
             </h1>
           </div>
           <section className="flex gap-8 justify-around flex-wrap">

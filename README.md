@@ -1,4 +1,4 @@
-# Numbers Game 🎉
+# CocoGuess 🎉
 
 A simple multiplayer game where you have to guess a secret number thought by another player. The first one to guess wins! 🏆
 
