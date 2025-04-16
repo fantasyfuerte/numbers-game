@@ -1,9 +1,6 @@
-import React from 'react'
-
+import { useGame } from "../context/game-context";
 function Results() {
-  return (
-    <div>Results</div>
-  )
+  return <section></section>;
 }
 
-export default Results
+export default Results;
