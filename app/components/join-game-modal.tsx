@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { GiPlayButton } from "react-icons/gi";
 
 interface Props {
   code: string;
@@ -35,11 +36,8 @@ function JoinGameModal({ code, setCode, cancel, joinGame }: Props) {
           maxLength={4}
           autoFocus
         />
-        <button
-          className="bg-primary hover:bg-primary/80 text-backgroundSecondary p-4 rounded-lg font-bold w-fit mx-auto"
-          type="submit"
-        >
-          Join
+        <button className="bg-primary hover:bg-primary/80 text-backgroundSecondary p-3 rounded-lg font-bold w-fit mx-auto">
+          <GiPlayButton size={25} />
         </button>
       </form>
       <button
