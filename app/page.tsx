@@ -7,6 +7,7 @@ import Initial from "./stages/1-initial";
 import Waiting from "./stages/2-waiting-rival";
 import SetNumber from "./stages/3-set-number";
 import Playing from "./stages/4-playing";
+import Results from "./stages/5-results";
 
 export default function Home() {
   const { appStage } = useGame();
@@ -18,6 +19,7 @@ export default function Home() {
       {appStage === Stages.WAITING && <Waiting code={code} />}
       {appStage === Stages.SET_NUMBER && <SetNumber code={code} />}
       {appStage === Stages.PLAYING && <Playing code={code} />}
+      {appStage === Stages.RESULTS && <Results />}
     </main>
   );
 }
