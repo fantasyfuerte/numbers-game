@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center gap-30 md:p-20 pt-24 md:pt-20">
       {appStage === Stages.INITIAL && <Initial code={code} setCode={setCode} />}
-      {appStage === Stages.WAITING && <Waiting code={code} />}
+      {appStage === Stages.WAITING && <Waiting code={code} setCode={setCode} />}
       {appStage === Stages.SET_NUMBER && <SetNumber code={code} />}
       {appStage === Stages.PLAYING && <Playing code={code} />}
       {appStage === Stages.RESULTS && <Results />}
