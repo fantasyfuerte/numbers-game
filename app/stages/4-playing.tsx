@@ -8,8 +8,9 @@ interface Props {
 
 function Playing({ code }: Props) {
   const [number, setNumber] = useState<string>();
-  const { isMyTurn, testNumber } = useGame();
   const [submitted, setSubmitted] = useState<boolean>(false);
+
+  const { isMyTurn, testNumber, notes } = useGame();
 
   function Submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -34,6 +35,22 @@ function Playing({ code }: Props) {
           disabled={submitted}
         />
       </form>
+      <article className="grid grid-cols-2 gap-4">
+        <div>
+          {notes.you.map((note, index) => (
+            <p key={index} className="text-primary font-bold">
+              {note[0]}: {note[1]}
+            </p>
+          ))}
+        </div>
+        <div>
+          {notes.rival.map((note, index) => (
+            <p key={index} className="text-primary font-bold">
+              {note[0]}: {note[1]}
+            </p>
+          ))}
+        </div>
+      </article>
     </section>
   );
 }

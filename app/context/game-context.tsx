@@ -16,6 +16,7 @@ export const GameContext = createContext<ReturnType<typeof GetGame>>({
   ready: false,
   appStage: Stages.INITIAL,
   isMyTurn: false,
+  notes: { you: [], rival: [] },
 });
 
 const GetGame = () => {
@@ -70,16 +71,19 @@ const GetGame = () => {
     socket.on("has-played", (data) => {
       setIsMyTurn(data.youTurn);
       const newNote: Note = [data.number, data.asserts];
-      if (!data.youTurn)
-        setNotes({
-          you: [...notes.you, newNote],
-          rival: notes.rival,
-        });
-      else
-        setNotes({
-          you: notes.you,
-          rival: [...notes.rival, newNote],
-        });
+      console.log(newNote);
+      setNotes((prevNotes) => {
+        if (!data.youTurn)
+          return {
+            you: [...prevNotes.you, newNote],
+            rival: prevNotes.rival,
+          };
+        else
+          return {
+            you: prevNotes.you,
+            rival: [...prevNotes.rival, newNote],
+          };
+      });
       console.log(notes);
     });
     socket.on("wait-timeout", () => {
@@ -103,6 +107,7 @@ const GetGame = () => {
     ready,
     appStage,
     isMyTurn,
+    notes,
   };
 };
 
