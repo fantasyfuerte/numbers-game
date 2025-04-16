@@ -11,6 +11,7 @@ export const GameContext = createContext<ReturnType<typeof GetGame>>({
   joinGame: () => {},
   setSecretNumber: () => {},
   finishGame: () => {},
+  testNumber: () => {},
   onlinePeople: 0,
   ready: false,
   appStage: Stages.INITIAL,
@@ -33,6 +34,10 @@ const GetGame = () => {
 
   const setSecretNumber = (number: string, gameCode: string) => {
     socket.emit("set-number", { code: gameCode, number });
+  };
+
+  const testNumber = (number: string, gameCode: string) => {
+    socket.emit("test-number", { code: gameCode, number });
   };
 
   const finishGame = (gameCode: string) => {
@@ -71,6 +76,7 @@ const GetGame = () => {
     joinGame,
     setSecretNumber,
     finishGame,
+    testNumber,
     onlinePeople,
     ready,
     appStage,
