@@ -28,7 +28,11 @@ function Playing({ code }: Props) {
         {isMyTurn ? "It's your turn" : "The rival is thinking"}
       </h4>
       <form onSubmit={Submit}>
-        <NumberInput onNumberChange={setNumber} submitted={submitted} />
+        <NumberInput
+          onNumberChange={setNumber}
+          submitted={submitted}
+          disabled={submitted}
+        />
       </form>
     </section>
   );

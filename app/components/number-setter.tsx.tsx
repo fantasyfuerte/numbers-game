@@ -6,7 +6,7 @@ interface Props {
   submitted?: boolean;
 }
 
-export function NumberInput({ onNumberChange, submitted }: Props) {
+export function NumberInput({ onNumberChange, submitted, disabled }: Props) {
   const [inputValue, setInputValue] = useState("");
   const [isFocused, setIsFocused] = useState(false);
 
@@ -39,6 +39,7 @@ export function NumberInput({ onNumberChange, submitted }: Props) {
         className="opacity-0 absolute"
         minLength={4}
         maxLength={4}
+        disabled={disabled}
         autoFocus
         required
       />
