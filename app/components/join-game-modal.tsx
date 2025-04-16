@@ -50,7 +50,7 @@ function JoinGameModal({ code, setCode, cancel, joinGame }: Props) {
         Cancel
       </button>
       {showError && (
-        <p className="text-red-500 text-center mt-2">Invalid Code</p>
+        <p className="text-secondary text-center mt-2">Invalid Code</p>
       )}
     </div>
   );
