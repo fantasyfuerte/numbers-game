@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NumberInput } from "../components/number-setter.tsx";
 import { useGame } from "../context/game-context";
+import { GiDoubled } from "react-icons/gi";
 
 interface Props {
   code: string;
@@ -36,7 +37,11 @@ function SetNumber({ code }: Props) {
           Submit
         </button>
       ) : (
-        <p className="text-primary font-bold mt-6">Waiting...</p>
+        <div
+          className={`text-backgroundSecondary rounded-lg font-bold mx-auto mt-4 bg-primary w-[86px] h-[40px] flex justify-center items-center animate-pulse`}
+        >
+          <GiDoubled className="animate-spin" size={30} />
+        </div>
       )}
     </form>
   );
