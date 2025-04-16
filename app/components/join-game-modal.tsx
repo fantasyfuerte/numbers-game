@@ -34,7 +34,10 @@ function JoinGameModal({ code, setCode, cancel, joinGame }: Props) {
           value={code}
           autoFocus
         />
-        <button className="bg-primary hover:bg-primary/80 text-backgroundSecondary p-4 rounded-lg font-bold w-fit mx-auto">
+        <button
+          className="bg-primary hover:bg-primary/80 text-backgroundSecondary p-4 rounded-lg font-bold w-fit mx-auto"
+          type="submit"
+        >
           Join
         </button>
       </form>
