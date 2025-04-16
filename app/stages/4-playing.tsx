@@ -47,18 +47,18 @@ function Playing({ code }: Props) {
         </button>
       </form>
       <article className="grid grid-cols-2 gap-10">
-        <div className="flex flex-col gap-4">
-          <h4 className="text-primary font-bold">You</h4>
+        <ul className="flex flex-col gap-4">
+          <h4 className="text-primary font-bold text-center">You</h4>
           {notes.you.map((note, index) => (
-            <div className="flex gap-2 items-center text-primary" key={index}>
+            <li className="flex gap-2 items-center text-primary" key={index}>
               <div className="bg-gradient-to-r from-primary to-secondary rounded-lg p-2 text-backgroundSecondary font-bold">
                 {note[0]}
               </div>
               <p className="font-semibold -mr-[6px]">{note[1]} </p>
               <GiCheckMark size={15} />
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
         <div>
           {notes.rival.map((note, index) => (
             <p key={index} className="text-primary font-bold">
