@@ -24,26 +24,6 @@ export function NumberInput({ onNumberChange }: Props) {
   const inputValues = inputValue.split("");
   const inputLength = inputValues.length;
 
-  if (inputLength === 0)
-    return (
-      <div>
-        <h4 className="text-primary/70 font-semibold text-center">
-          Start typing...
-        </h4>
-        <input
-          type="text"
-          onBlur={handleBlur}
-          onChange={handleChange}
-          value={inputValue}
-          className="opacity-0 absolute"
-          minLength={4}
-          maxLength={4}
-          autoFocus
-          required
-        />
-      </div>
-    );
-
   return (
     <label className="relative grid grid-cols-4 gap-2 max-w-full w-xs text-xl font-bold text-primary">
       <input
@@ -57,6 +37,15 @@ export function NumberInput({ onNumberChange }: Props) {
         autoFocus
         required
       />
+      {inputValue.length === 0 &&
+        Array(4)
+          .fill(0)
+          .map((_, i) => (
+            <div
+              key={i}
+              className="border-1 border-secondary/60 rounded-md aspect-square animate-pulse"
+            ></div>
+          ))}
       {inputValues.map((value, index) => (
         <div
           key={index}
