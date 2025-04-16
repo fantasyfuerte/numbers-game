@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useGame } from "../context/game-context";
-import { Numbers } from "../components/number-setter.tsx";
+import { NumberInput } from "../components/number-setter.tsx";
 
 interface Props {
   code: string;
@@ -22,7 +22,7 @@ function Playing({ code }: Props) {
         {isMyTurn ? "It's your turn" : "The rival is thinking"}
       </h4>
       <form onSubmit={Submit}>
-        <Numbers onNumberChange={setNumber} />
+        <NumberInput onNumberChange={setNumber} />
       </form>
     </section>
   );

@@ -5,59 +5,76 @@ interface Props {
   disabled?: boolean;
 }
 
-export function Numbers({ onNumberChange }: Props) {
-  const [value, setValue] = useState("");
-  const [focused, setFocused] = useState(false);
+export function NumberInput({ onNumberChange }: Props) {
+  const [inputValue, setInputValue] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
 
-  const validate = (value: string) => {
-    if (value.length > 4) return false;
-    if (value.startsWith("0")) return false;
-    if (new Set(value).size != value.length) return false;
-    return /^[0-9]*$/.test(value);
-  };
-  const values = value.split("");
-  const length = values.length;
-  const onBlur = () => setFocused(false);
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const validationResult = validate(e.target.value);
-    if (!validationResult) {
-      e.preventDefault();
+  const handleBlur = () => setIsFocused(false);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    const isValid = validateNumber(newValue);
+    if (!isValid) {
+      event.preventDefault();
       return;
     }
-    setValue(e.target.value);
-    onNumberChange(e.target.value);
+    setInputValue(newValue);
+    onNumberChange(newValue);
   };
+
+  const inputValues = inputValue.split("");
+  const inputLength = inputValues.length;
+
+  if (inputLength === 0)
+    return (
+      <div>
+        <h4 className="text-primary/70 font-semibold text-center">
+          Start typing...
+        </h4>
+        <input
+          type="text"
+          onBlur={handleBlur}
+          onChange={handleChange}
+          value={inputValue}
+          className="opacity-0 absolute"
+          minLength={4}
+          maxLength={4}
+          autoFocus
+          required
+        />
+      </div>
+    );
+
   return (
     <label className="relative grid grid-cols-4 gap-2 max-w-full w-xs text-xl font-bold text-primary">
       <input
         type="text"
-        onBlur={onBlur}
-        onChange={onChange}
-        value={value}
+        onBlur={handleBlur}
+        onChange={handleChange}
+        value={inputValue}
         className="opacity-0 absolute"
         minLength={4}
         maxLength={4}
         autoFocus
         required
       />
-      <div className="flex items-center justify-center aspect-square border-2 border-primary/70 rounded-md">
-        {values[0] && values[0]}
-        {length == 0 && focused && <Caret />}
-      </div>
-      <div className="flex items-center justify-center aspect-square border-2 border-primary/70 rounded-md">
-        {values[1] && values[1]}
-        {length == 1 && focused && <Caret />}
-      </div>
-      <div className="flex items-center justify-center aspect-square border-2 border-primary/70 rounded-md">
-        {values[2] && values[2]}
-        {length == 2 && focused && <Caret />}
-      </div>
-      <div className="flex items-center justify-center aspect-square border-2 border-primary/70 rounded-md">
-        {values[3] && values[3]}
-        {length >= 3 && focused && <Caret />}
-      </div>
+      {inputValues.map((value, index) => (
+        <div
+          key={index}
+          className="flex items-center justify-center aspect-square border-2 border-primary/70 rounded-md"
+        >
+          {value}
+          {inputLength === index && isFocused && <Caret />}
+        </div>
+      ))}
     </label>
   );
+}
+
+function validateNumber(value: string) {
+  if (value.length > 4) return false;
+  if (value.startsWith("0")) return false;
+  if (new Set(value).size !== value.length) return false;
+  return /^[0-9]*$/.test(value);
 }
 
 function Caret() {
