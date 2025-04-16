@@ -86,11 +86,13 @@ const GetGame = () => {
           };
       });
     });
-    socket.on("winner", (e) => {
+    socket.on("winner", () => {
       setResults("winner");
+      setAppStage(Stages.RESULTS);
     });
-    socket.on("game-over", (e) => {
+    socket.on("game-over", () => {
       setResults("loser");
+      setAppStage(Stages.RESULTS);
     });
     socket.on("wait-timeout", () => {
       setAppStage(Stages.INITIAL);
