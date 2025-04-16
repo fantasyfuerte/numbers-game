@@ -8,12 +8,14 @@ interface Props {
 
 function SetNumber({ code }: Props) {
   const [choosenNumber, setChosenNumber] = useState<string>();
+  const [submited, setSubmited] = useState<boolean>(false);
   const { setSecretNumber } = useGame();
 
   function Submit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (choosenNumber && choosenNumber.length == 4) {
       setSecretNumber(choosenNumber, code);
+      setSubmited(true);
     }
   }
 
@@ -23,15 +25,19 @@ function SetNumber({ code }: Props) {
         Choose your secret number
       </h4>
       <Numbers onNumberChange={setChosenNumber} />
-      <button
-        className={`text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit mx-auto mt-4 block ${
-          !choosenNumber || choosenNumber?.length !== 4
-            ? "opacity-40 bg-none"
-            : "bg-primary hover:bg-primary/80"
-        }`}
-      >
-        Submit
-      </button>
+      {!submited ? (
+        <button
+          className={`text-backgroundSecondary px-4 py-2 rounded-lg font-bold w-fit mx-auto mt-4 block ${
+            !choosenNumber || choosenNumber?.length !== 4
+              ? "opacity-40 bg-none"
+              : "bg-primary hover:bg-primary/80"
+          }`}
+        >
+          Submit
+        </button>
+      ) : (
+        <p className="text-primary font-bold mt-6">Waiting...</p>
+      )}
     </form>
   );
 }
