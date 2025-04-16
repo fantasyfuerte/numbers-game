@@ -53,6 +53,7 @@ const GetGame = () => {
   const finishGame = (gameCode: string) => {
     socket.emit("finish-game", gameCode);
     setAppStage(Stages.INITIAL);
+    setNotes({ you: [], rival: [] });
   };
 
   useEffect(() => {
@@ -89,10 +90,12 @@ const GetGame = () => {
     socket.on("winner", () => {
       setResults("winner");
       setAppStage(Stages.RESULTS);
+      setNotes({ you: [], rival: [] });
     });
     socket.on("game-over", () => {
       setResults("loser");
       setAppStage(Stages.RESULTS);
+      setNotes({ you: [], rival: [] });
     });
     socket.on("wait-timeout", () => {
       setAppStage(Stages.INITIAL);
