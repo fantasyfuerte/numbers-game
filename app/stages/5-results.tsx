@@ -28,7 +28,7 @@ function Results({ code, setCode }: Props) {
           finishGame(code);
           setCode("");
         }}
-        className="bg-primary text-backgroundSecondary font-bold px-4 py-2 rounded-lg w-fit"
+        className="bg-primary hover:bg-primary/80 text-backgroundSecondary font-bold px-4 py-2 rounded-lg w-fit"
       >
         Play again
       </button>
