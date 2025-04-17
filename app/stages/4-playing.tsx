@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useGame } from "../context/game-context";
 import { NumberInput } from "../components/number-setter.tsx";
-import { GiCheckMark } from "react-icons/gi";
+import { GiCheckMark, GiHumanTarget, GiMac10 } from "react-icons/gi";
 
 interface Props {
   code: string;
@@ -48,6 +48,7 @@ function Playing({ code }: Props) {
       </form>
       <article className="grid grid-cols-2 gap-10">
         <ul className="flex flex-col gap-4 items-center">
+          <GiMac10 size={30} className="text-primary" />
           <h4 className="text-primary font-bold text-center">You</h4>
           {notes.you.map((note, index) => (
             <li className="flex gap-2 items-center text-primary" key={index}>
@@ -60,6 +61,7 @@ function Playing({ code }: Props) {
           ))}
         </ul>
         <ul className="flex flex-col gap-4 items-center">
+          <GiHumanTarget size={30} className="text-primary" />
           <h4 className="text-primary font-bold text-center">Rival</h4>
           {notes.rival.map((note, index) => (
             <li className="flex gap-2 items-center text-primary" key={index}>
