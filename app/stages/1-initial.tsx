@@ -26,7 +26,7 @@ function Home({ setCode, code }: Props) {
   }
 
   return (
-    <section className="flex flex-col gap-20">
+    <section>
       {modal ? (
         <JoinGameModal
           code={code}
@@ -35,7 +35,7 @@ function Home({ setCode, code }: Props) {
           joinGame={joinGame}
         />
       ) : (
-        <>
+        <section className="flex flex-col gap-20 justify-center">
           <div className="flex flex-col items-center -mt-10">
             <h4 className="text-lg md:text-xl text-primary font-bold">
               Welcome to
@@ -60,7 +60,7 @@ function Home({ setCode, code }: Props) {
               action={() => setModal(true)}
             />
           </section>
-        </>
+        </section>
       )}
     </section>
   );
